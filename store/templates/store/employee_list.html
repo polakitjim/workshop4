@@ -1,0 +1,11 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>รายชื่อพนักงาน</h2>
+<a href="{% url 'employee_create' %}" class="btn btn-primary mb-3">+ เพิ่มพนักงาน</a>
+<table class="table">
+    <tr><th>ชื่อ</th><th>ตำแหน่ง</th><th>เงินเดือน</th></tr>
+    {% for emp in employees %}
+    <tr><td>{{ emp.name }}</td><td>{{ emp.position }}</td><td>{{ emp.salary }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

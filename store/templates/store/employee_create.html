@@ -1,0 +1,13 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>เพิ่มพนักงาน</h2>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="ชื่อ" class="form-control" required><br>
+    <input type="text" name="position" placeholder="ตำแหน่ง" class="form-control" required><br>
+    <input type="number" name="salary" placeholder="เงินเดือน" class="form-control" required><br>
+    <input type="email" name="email" placeholder="อีเมล" class="form-control" required><br>
+    <input type="date" name="hire_date" class="form-control" required><br>
+    <button type="submit" class="btn btn-success">บันทึก</button>
+</form>
+{% endblock %}
