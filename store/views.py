@@ -1,7 +1,20 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
-from .models import Product
+from .models import Product, Employee
 from .forms import ProductForm
+
+# Home / Dashboard Page
+def home(request):
+    total_products = Product.objects.count()
+    total_employees = Employee.objects.count()
+    recent_products = Product.objects.all().order_by('-id')[:4]
+    
+    context = {
+        'total_products': total_products,
+        'total_employees': total_employees,
+        'recent_products': recent_products,
+    }
+    return render(request, 'store/home.html', context)
 
 # Read & Search & Pagination
 def product_list(request):
@@ -48,15 +61,13 @@ def product_delete(request, pk):
         return redirect('product_list')
     return render(request, 'store/product_confirm_delete.html', {'product': product})
 
+# Employee Views
 def employee_list(request):
-    from .models import Employee
     employees = Employee.objects.all()
     return render(request, 'store/employee_list.html', {'employees': employees})
 
 def employee_create(request):
-    from .models import Employee
     if request.method == 'POST':
-        # แบบง่าย: รับค่าจาก request.POST ตรงๆ
         Employee.objects.create(
             name=request.POST['name'],
             position=request.POST['position'],

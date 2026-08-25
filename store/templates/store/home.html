@@ -1,0 +1,90 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<!-- Welcome Banner -->
+<div class="p-4 p-md-5 mb-4 rounded-3 bg-dark text-white shadow-sm position-relative overflow-hidden">
+    <div class="col-md-8 position-relative z-1">
+        <h1 class="display-6 fw-bold mb-2">ยินดีต้อนรับสู่ระบบ MyStore & Staff</h1>
+        <p class="text-white-50 fs-6 mb-3">ศูนย์กลางจัดการข้อมูลสินค้า พนักงาน และการเข้าถึงระบบควบคุมหลังบ้าน</p>
+        <a href="/admin/" target="_blank" class="btn btn-primary btn-sm px-3 fw-semibold">
+            <i class="bi bi-shield-lock-fill me-1"></i> เข้าสู่หน้า Admin หลังบ้าน
+        </a>
+    </div>
+</div>
+
+<!-- Dashboard Stat Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm bg-primary text-white h-100 rounded-3">
+            <div class="card-body p-4 d-flex align-items-center justify-content-between">
+                <div>
+                    <div class="text-white-50 small text-uppercase fw-semibold mb-1">สินค้าทั้งหมด</div>
+                    <h2 class="display-6 fw-bold mb-0">{{ total_products }} <span class="fs-6 fw-normal">รายการ</span></h2>
+                </div>
+                <div class="fs-1 opacity-50"><i class="bi bi-box-seam"></i></div>
+            </div>
+            <div class="card-footer bg-black bg-opacity-10 border-0 text-end py-2">
+                <a href="{% url 'product_list' %}" class="text-white text-decoration-none small fw-semibold">ดูรายการสินค้า <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm bg-dark text-white h-100 rounded-3">
+            <div class="card-body p-4 d-flex align-items-center justify-content-between">
+                <div>
+                    <div class="text-white-50 small text-uppercase fw-semibold mb-1">พนักงานทั้งหมด</div>
+                    <h2 class="display-6 fw-bold mb-0">{{ total_employees }} <span class="fs-6 fw-normal">คน</span></h2>
+                </div>
+                <div class="fs-1 opacity-50"><i class="bi bi-person-badge"></i></div>
+            </div>
+            <div class="card-footer bg-black bg-opacity-20 border-0 text-end py-2">
+                <a href="{% url 'employee_list' %}" class="text-white text-decoration-none small fw-semibold">ดูรายการพนักงาน <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions Section -->
+<div class="border-top pt-4">
+    <h5 class="fw-bold mb-3"><i class="bi bi-lightning-charge-fill text-warning me-1"></i> เมนูด่วน (Quick Links)</h5>
+    <div class="row g-2">
+        <div class="col-6 col-md-3">
+            <a href="/admin/" target="_blank" class="btn btn-outline-dark w-100 py-3 text-start d-flex align-items-center gap-2">
+                <i class="bi bi-gear-fill fs-4 text-primary"></i>
+                <div>
+                    <div class="fw-bold small">ระบบ Admin</div>
+                    <div class="text-muted opacity-75" style="font-size: 0.75rem;">จัดการฐานข้อมูล</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-3">
+            <a href="{% url 'product_list' %}" class="btn btn-outline-dark w-100 py-3 text-start d-flex align-items-center gap-2">
+                <i class="bi bi-cart-fill fs-4 text-success"></i>
+                <div>
+                    <div class="fw-bold small">รายการสินค้า</div>
+                    <div class="text-muted opacity-75" style="font-size: 0.75rem;">ดูและแก้ไขสินค้า</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-3">
+            <a href="{% url 'employee_list' %}" class="btn btn-outline-dark w-100 py-3 text-start d-flex align-items-center gap-2">
+                <i class="bi bi-people-fill fs-4 text-info"></i>
+                <div>
+                    <div class="fw-bold small">รายชื่อพนักงาน</div>
+                    <div class="text-muted opacity-75" style="font-size: 0.75rem;">จัดการข้อมูลพนักงาน</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-3">
+            <a href="{% url 'product_create' %}" class="btn btn-outline-dark w-100 py-3 text-start d-flex align-items-center gap-2">
+                <i class="bi bi-plus-circle-fill fs-4 text-warning"></i>
+                <div>
+                    <div class="fw-bold small">เพิ่มสินค้าใหม่</div>
+                    <div class="text-muted opacity-75" style="font-size: 0.75rem;">ลงทะเบียนสินค้า</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
